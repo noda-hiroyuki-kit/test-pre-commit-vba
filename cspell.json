@@ -101,6 +101,7 @@
         "vbext",
         "venv",
         "virtualenv",
-        "webassets"
+        "webassets",
+        "xlsb"
     ]
 }

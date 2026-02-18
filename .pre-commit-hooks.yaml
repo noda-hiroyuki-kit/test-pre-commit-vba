@@ -1,0 +1,13 @@
+---
+- id: extract-vba-code
+  name: Extract VBA code from Excel files
+  description: Extracts VBA code from Excel files and saves it in a specified directory.
+  entry: python pre_commit_vba.py extract
+  language: python
+  files: \.xlsm$|\.xlsb$|\.xls$
+  exclude: ^(?!.*\.(xlsm|xlsb|xls)$).*$
+- id: check-excel-book-version
+  name: Check Excel book version
+  description: Checks the version of Excel books to ensure compatibility.
+  entry: python pre_commit_vba.py check
+  always_run: true
