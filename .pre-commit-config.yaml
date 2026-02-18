@@ -1,0 +1,48 @@
+repos:
+- repo: https://github.com/streetsidesoftware/cspell-cli
+  rev: v9.3.1
+  hooks:
+    - id: cspell # Spell check changed files
+    - id: cspell # Spell check the commit message
+      name: check commit message spelling
+      args:
+        - --no-must-find-files
+        - --no-progress
+        - --no-summary
+        - --files
+        - .git/COMMIT_EDITMSG
+      stages: [commit-msg]
+      always_run: true # This might not be necessary.
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v6.0.0
+  hooks:
+    - id: trailing-whitespace
+      args: [--markdown-linebreak-ext=md]
+    - id: end-of-file-fixer
+    - id: check-yaml
+      exclude: ^mkdocs\.yml$
+    - id: check-added-large-files
+    - id: check-toml
+    - id: check-xml
+    - id: destroyed-symlinks
+    - id: check-json
+    - id: mixed-line-ending
+      args: ['--fix=lf']
+- repo: https://github.com/adrienverge/yamllint.git
+  rev: v1.37.1
+  hooks:
+    - id: yamllint
+      args: [--strict, -d, " {rules: {indentation: {spaces: 2}}}"]
+      files: ^mkdocs\.yml$
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.14.5
+  hooks:
+    # Run the linter.
+    - id: ruff-check
+      args: [ --fix ]
+    # Run the formatter.
+    - id: ruff-format
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v1.18.2
+  hooks:
+    - id: mypy
