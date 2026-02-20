@@ -7,6 +7,7 @@
   language: python
   files: \.xlsm$|\.xlsb$|\.xls$
   exclude: ^(?!.*\.(xlsm|xlsb|xls)$).*$
+  pass_filenames: false
 - id: check-excel-book-version
   name: Check Excel book version
   description: Checks the version of Excel books to ensure compatibility.
@@ -14,3 +15,4 @@
   args: [check]
   language: python
   always_run: true
+  pass_filenames: false
