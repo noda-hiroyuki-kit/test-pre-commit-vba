@@ -2,7 +2,7 @@
 - id: extract-vba-code
   name: Extract VBA code from Excel files
   description: Extracts VBA code from Excel files and saves it in a specified directory.
-  entry: pre_commit_vba
+  entry: python pre_commit_vba.py
   args: [extract]
   language: python
   files: \.xlsm$|\.xlsb$|\.xls$
@@ -10,7 +10,7 @@
 - id: check-excel-book-version
   name: Check Excel book version
   description: Checks the version of Excel books to ensure compatibility.
-  entry: pre_commit_vba
+  entry: python pre_commit_vba.py
   args: [check]
   language: python
   always_run: true
